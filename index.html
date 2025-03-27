@@ -1,105 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yearbook Clicker - Frequency</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            text-align: center; 
-            background-color: #004d00; /* Dark green */
-            color: white;
-        }
-        #clicker { 
-            font-size: 50px; 
-            cursor: pointer; 
-            background: none;
-            border: none;
-            color: white;
-        }
-        #shop { margin-top: 20px; }
-        .upgrade { 
-            background: #008000; /* Green */
-            color: white; 
-            border: none; 
-            padding: 10px;
-            margin: 5px;
-            cursor: pointer;
-        }
-    </style>
+    <title>JaBoSite</title>
 </head>
+
 <body>
-    <h1>Yearbook Clicker: Frequency</h1>
-    <p>Yearbook Pages: <span id="count">0</span></p>
-    <button id="clicker">📖 Click Me!</button>
+    <h1>Groetjes</h1>
+    <h3>Bouter Wakker</h3>
 
-    <div id="shop">
-        <h2>Upgrades</h2>
-        <div id="upgradesContainer"></div>
-    </div>
 
-    <script>
-        let count = localStorage.getItem("pages") ? parseInt(localStorage.getItem("pages")) : 0;
 
-        // Upgrade list
-        let upgrades = [
-            {name: "Radio Antenna", price: 10, pagesPerSecond: 1, count: 0},
-            {name: "Podcast Booth", price: 50, pagesPerSecond: 5, count: 0},
-            {name: "Printing Press", price: 200, pagesPerSecond: 20, count: 0}
-        ];
-
-        // Load saved upgrades
-        upgrades.forEach((upgrade, index) => {
-            let savedCount = localStorage.getItem(`upgrade_${index}`);
-            if (savedCount) {
-                upgrade.count = parseInt(savedCount);
-            }
-        });
-
-        document.getElementById("count").innerText = count;
-
-        document.getElementById("clicker").addEventListener("click", function() {
-            count++;
-            document.getElementById("count").innerText = count;
-            localStorage.setItem("pages", count);
-        });
-
-        function updateUpgradesUI() {
-            let container = document.getElementById("upgradesContainer");
-            container.innerHTML = ""; // Clear before re-rendering
-
-            upgrades.forEach((upgrade, index) => {
-                let btn = document.createElement("button");
-                btn.className = "upgrade";
-                btn.innerText = `${upgrade.name} (${upgrade.count}) - ${upgrade.price} pages`;
-                btn.onclick = function() { buyUpgrade(index); };
-                container.appendChild(btn);
-            });
-        }
-
-        function buyUpgrade(index) {
-            let upgrade = upgrades[index];
-            if (count >= upgrade.price) {
-                count -= upgrade.price;
-                upgrade.count++;
-                localStorage.setItem("pages", count);
-                localStorage.setItem(`upgrade_${index}`, upgrade.count);
-                document.getElementById("count").innerText = count;
-                updateUpgradesUI();
-            }
-        }
-
-        function autoClick() {
-            upgrades.forEach(upgrade => {
-                count += upgrade.count * upgrade.pagesPerSecond;
-            });
-            document.getElementById("count").innerText = count;
-            localStorage.setItem("pages", count);
-        }
-
-        updateUpgradesUI();
-        setInterval(autoClick, 1000);
-    </script>
 </body>
 </html>
