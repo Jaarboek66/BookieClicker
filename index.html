@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown to June 3rd</title>
+    <title>Jaarboek Uitreiking</title>
     <style>
         @font-face {
             font-family: americane;
@@ -18,7 +18,7 @@
         body {
             font-family: americane;
             text-align: center;
-            padding: 50px; 
+            padding: 20px; 
             background-color: rgb(141, 185, 95);
         }
 
@@ -101,7 +101,7 @@
     </div>
     <script>
         function updateCountdown() {
-            const targetDate = new Date(new Date().getFullYear(), 5, 3, 17); // June 3rd
+            const targetDate = new Date(new Date().getFullYear(), 5, 3, 17);
             const now = new Date();
             if (now > targetDate) {
                 targetDate.setFullYear(now.getFullYear() + 1);
