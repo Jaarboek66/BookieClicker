@@ -76,7 +76,7 @@
     </div>
     <script>
         function updateCountdown() {
-            const targetDate = new Date(new Date().getFullYear(), 5, 3); // June 3rd
+            const targetDate = new Date(new Date().getFullYear(), 5, 3, 17); // June 3rd
             const now = new Date();
             if (now > targetDate) {
                 targetDate.setFullYear(now.getFullYear() + 1);
@@ -90,6 +90,28 @@
 
             document.getElementById("countdown").innerHTML =
                 `${days}d ${hours}u ${minutes}m ${seconds}s`;
+        }
+
+        function addToGoogleCalendar() {
+            const year = new Date().getFullYear();
+            const start = new Date(year, 5, 3, 17, 0, 0); 
+            const end = new Date(year, 5, 3, 22, 0, 0);   
+
+            
+            const formatDate = (date) => {
+                return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+            };
+
+            const startStr = formatDate(start);
+            const endStr = formatDate(end);
+
+            const title = encodeURIComponent("Jaarboek Uitreiking!!!");
+            const details = encodeURIComponent("Kom vanavond je gratis Jaarboek ophalen");
+            const location = encodeURIComponent("/Pub");
+            
+            const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startStr}/${endStr}&details=${details}&location=${location}&sf=true&output=xml`;
+
+            window.open(url, '_blank');
         }
 
         setInterval(updateCountdown, 1000);
