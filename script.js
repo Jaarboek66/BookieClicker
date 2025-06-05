@@ -1,7 +1,7 @@
 // const { stringify } = require("querystring");
 
 document.addEventListener("DOMContentLoaded", function () {
-  const EXPONENTIALINCREASE = 1.2;
+  const EXPONENTIALINCREASE = 1.4;
   const STORAGE_KEYS = {
     count: "boeken",
     clickworth: "clickworth",
@@ -10,30 +10,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let bps = 0;
 
-  names = [
-      " ",
-      "duizend",       
-      "miljoen",       
-      "miljard",       
-      "biljoen",       
-      "biljard",       
-      "triljoen",      
-      "triljard",      
-      "quadriljoen",   
-      "quadriljard",   
-      "quintiljoen",   
-      "quintiljard",   
-      "sextiljoen",    
-      "sextiljard",    
-      "septiljoen",    
-      "septiljard",    
-      "octiljoen",     
-      "octiljard",     
-      "noniljoen",     
-      "noniljard",     
-      "deciljoen",     
-      "deciljard"      
-  ]
+names = [
+    " ",
+    "duizend",       
+    "miljoen",       
+    "miljard",       
+    "biljoen",       
+    "biljard",       
+    "triljoen",      
+    "triljard",      
+    "quadriljoen",   
+    "quadriljard",   
+    "quintiljoen",   
+    "quintiljard",   
+    "sextiljoen",    
+    "sextiljard",    
+    "septiljoen",    
+    "septiljard",    
+    "octiljoen",     
+    "octiljard",     
+    "noniljoen",     
+    "noniljard",     
+    "deciljoen",     
+    "deciljard",     
+    "undeciljoen",
+    "undeciljard",
+    "duodeciljoen",
+    "duodeciljard",
+    "tredeciljoen",
+    "tredeciljard",
+    "quattuordeciljoen",
+    "quattuordeciljard",
+    "quindeciljoen",
+    "quindeciljard",
+    "sexdeciljoen",
+    "sexdeciljard",
+    "septendeciljoen",
+    "septendeciljard",
+    "octodeciljoen",
+    "octodeciljard",
+    "novemdeciljoen",
+    "novemdeciljard",
+    "vigintiljoen",
+    "vigintiljard"
+]
 
   let upgrades = [
     { name: "Jordan", price: 10, bookiesPerSeconde: 1, count: 0 },
@@ -57,10 +77,10 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   let boosts = [
-    { name: "Kikker", price: 660, clickfactor: 1.2, count: 0 },
-    { name: "ETVis", price: 5000, clickfactor: 1.5, count: 0 },
-    { name: "Capybara", price: 20000, clickfactor: 2.5, count: 0 },
-    { name: "Schotse Hooglander", price: 100000, clickfactor: 4.5, count: 0 }
+    { name: "Kikker", price: 6600, clickfactor: 1.02, count: 0 },
+    { name: "ETVis", price: 50000, clickfactor: 1.05, count: 0 },
+    { name: "Capybara", price: 200000, clickfactor: 1.25, count: 0 },
+    { name: "Schotse Hooglander", price: 1000000, clickfactor: 1.4, count: 0 }
   ];
 
   let count = getFromStorage(STORAGE_KEYS.count, 0);
@@ -138,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     let category = Math.floor(counter/3);
     let extra = Math.floor(number / (10**(category*3)));
-    let name = names[category] || "zoek een leven";
+    let name = names[category] || "Heel veel";
 
     let result = `${extra} ${name}`;
     return result;
